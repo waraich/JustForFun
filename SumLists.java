@@ -1,70 +1,38 @@
 public class SumLists {
 
-    class Node {
-        private int data;
-        private Node next;
-
-        public Node(int data) {
-            this.data = data;
-        }
-
-        public Node() {
-
-        }
-
-        public int getData() {
-            return data;
-        }
-
-        public void setData(int data) {
-            this.data = data;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
-
-    }
-
     /**
      * @param args
      */
     public static void main(String[] args) {
-        SumLists sumLists = new SumLists();
-        Node Node1 = sumLists.new Node(9);
-        Node Node2 = sumLists.new Node(9);
-        Node Node3 = sumLists.new Node(9);
-        Node Node4 = sumLists.new Node(9);
-        Node Node5 = sumLists.new Node(9);
-        Node5.setNext(Node4);
-        Node4.setNext(Node3);
-        Node3.setNext(Node2);
-        Node2.setNext(Node1);
-        Node node = sumEqual(Node5, Node5);
+        ListNode ListNode1 = new ListNode(9);
+        ListNode ListNode2 = new ListNode(9);
+        ListNode ListNode3 = new ListNode(9);
+        ListNode ListNode4 = new ListNode(9);
+        ListNode ListNode5 = new ListNode(9);
+        ListNode5.setNext(ListNode4);
+        ListNode4.setNext(ListNode3);
+        ListNode3.setNext(ListNode2);
+        ListNode2.setNext(ListNode1);
+        ListNode ListNode = sumEqual(ListNode5, ListNode5);
 
-        while (node != null) {
+        while (ListNode != null) {
             if (carry != 0) {
                 System.out.print(carry);
-                carry=0;
+                carry = 0;
             }
-            System.out.print(node.getData());
-            node = node.getNext();
+            System.out.print(ListNode.getData());
+            ListNode = ListNode.getNext();
         }
 
     }
 
     private static int carry = 0;
 
-    public static Node sumEqual(Node head1, Node head2) {
+    public static ListNode sumEqual(ListNode head1, ListNode head2) {
 
         if (head1 == null)
             return null;
-        SumLists sumLists = new SumLists();
-        Node newHead = sumLists.new Node();
+        ListNode newHead = new ListNode();
         newHead.setNext(sumEqual(head1.getNext(), head1.getNext()));
         int sum = head1.getData() + head2.getData() + carry;
         carry = sum / 10;
@@ -75,11 +43,11 @@ public class SumLists {
     }
 
     /*
-     * public static Node sum(Node head1, Node head2) {
+     * public static ListNode sum(ListNode head1, ListNode head2) {
      * int len1 = 0;
      * int len2 = 0;
-     * Node temhead1 = head1;
-     * Node temhead2 = head2;
+     * ListNode temhead1 = head1;
+     * ListNode temhead2 = head2;
      * 
      * while (temhead1 != null) {
      * len1++;
@@ -90,16 +58,16 @@ public class SumLists {
      * temhead2 = temhead2.getNext();
      * }
      * 
-     * Node node = null;
+     * ListNode ListNode = null;
      * if (len1 == len2) {
-     * node = sum(head1, head2);
+     * ListNode = sum(head1, head2);
      * }
      * 
      * if (carry != 0) {
      * SumLists sumLists = new SumLists();
-     * Node carryNode = sumLists.new Node(carry);
-     * carryNode.setNext(node);
-     * node = carryNode;
+     * ListNode carryListNode = sumLists.new ListNode(carry);
+     * carryListNode.setNext(ListNode);
+     * ListNode = carryListNode;
      * }
      * 
      * return null;

@@ -6,11 +6,11 @@ public class TreeMaxFrequency {
     public static void main(String[] args) {
 
         TreeMaxFrequency tree = new TreeMaxFrequency();
-        TreeMaxFrequency.Node node = tree.new Node(2);
-        TreeMaxFrequency.Node node2 = tree.new Node(2);
-        TreeMaxFrequency.Node node3 = tree.new Node(1);
-        TreeMaxFrequency.Node node5 = tree.new Node(2);
-        TreeMaxFrequency.Node node6 = tree.new Node(1);
+        TreeNode node = new TreeNode(2);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(1);
+        TreeNode node5 = new TreeNode(2);
+        TreeNode node6 = new TreeNode(1);
         node3.setLeft(node5);
         node3.setRight(node6);
         node2.setLeft(node);
@@ -22,42 +22,8 @@ public class TreeMaxFrequency {
 
     }
 
-    class Node {
-        public Node(int data) {
-            this.data = data;
-        }
 
-        private int data;
-        private Node left;
-        private Node right;
-
-        public int getData() {
-            return data;
-        }
-
-        public void setData(int data) {
-            this.data = data;
-        }
-
-        public Node getLeft() {
-            return left;
-        }
-
-        public void setLeft(Node left) {
-            this.left = left;
-        }
-
-        public Node getRight() {
-            return right;
-        }
-
-        public void setRight(Node right) {
-            this.right = right;
-        }
-
-    }
-
-    public static int sum(Node node) {
+    public static int sum(TreeNode node) {
         if (node == null)
             return 0;
         return sum(node.getLeft()) + node.getData() + sum(node.getRight());
@@ -70,7 +36,7 @@ public class TreeMaxFrequency {
 
     
     //Pre order.
-    public void maxFrequency(Node node) {
+    public void maxFrequency(TreeNode node) {
         if (node == null)
             return;
 
@@ -81,7 +47,7 @@ public class TreeMaxFrequency {
         } else {
             current++;
         }
-        maxFrequency(node.left);
-        maxFrequency(node.right);
+        maxFrequency(node.getLeft());
+        maxFrequency(node.getRight());
     }
 }
